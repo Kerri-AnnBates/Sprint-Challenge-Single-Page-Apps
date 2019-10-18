@@ -15,10 +15,18 @@ export default function CharacterList() {
   const [charactersData, setCharactersData] = useState([]);
   const [filteredChracters, setFilteredCharacters] = useState([]);
   const [searchValue, setSearchValue] = useState('');
+  const [queryNameSearch, setQueryNameSearch] = useState('');
+  const [searchedCharacter, setSearchedCharacter] = useState('');
 
   // Get value from search input.
   function searchCharacters(e) {
     setSearchValue(e.target.value);
+  }
+
+  // Stretch: name search.
+  function onSearch(name) {
+    setQueryNameSearch(name);
+    console.log(name);
   }
 
   // Pull in data from API on load.
@@ -44,10 +52,21 @@ export default function CharacterList() {
 
   }, [searchValue]);
 
+  // Api call for name Search
+  useEffect(() => {
+    Axios.get(`https://rickandmortyapi.com/api/character/?name=${searchedCharacter}`)
+    .then(response => {
+      setSearchedCharacter(response.data.results);
+    })
+    .catch(error => {
+      console.log('Data could not be fetched.', error);
+    })
+  }, [queryNameSearch]);
+
 
   return (
     <section className="character-list">
-      <SearchForm searchCharacters={searchCharacters} />
+      <SearchForm searchCharacters={searchCharacters} onSearch={onSearch} />
       <h2>Characters</h2>
       <Flex>
         {filteredChracters.map(character => (

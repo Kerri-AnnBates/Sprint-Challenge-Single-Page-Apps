@@ -14,7 +14,7 @@ const SearchInput = styled.input`
 `
 
 export default function SearchForm(props) {
-  const { searchCharacters } = props;
+  const { searchCharacters, onSearch } = props;
   return (
     <SearchSection className="search-form">
      <form>
@@ -24,6 +24,7 @@ export default function SearchForm(props) {
           id="name" 
           placeholder="Search character" 
           onChange={searchCharacters} 
+          onSubmit={(e) => onSearch(e.target.value)}
         />
      </form>
     </SearchSection>
