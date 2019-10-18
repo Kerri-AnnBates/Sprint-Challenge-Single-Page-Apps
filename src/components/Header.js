@@ -22,6 +22,8 @@ export default function Header() {
       <Nav>
         <StyledLink  exact to='/'>Home</StyledLink>
         <StyledLink to='/characters'>Characters</StyledLink>
+        <StyledLink to='/episodes'>Episodes</StyledLink>
+        <StyledLink to='/locations'>Locations</StyledLink>
       </Nav>
     </header>
   );

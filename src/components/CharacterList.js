@@ -48,6 +48,7 @@ export default function CharacterList() {
   return (
     <section className="character-list">
       <SearchForm searchCharacters={searchCharacters} />
+      <h2>Characters</h2>
       <Flex>
         {filteredChracters.map(character => (
           <CharacterCard character={character} key={character.id}/>

@@ -15,15 +15,15 @@ const SubTitle = styled.h2`
   color: #fff;
 `
 
-export default function LocationCard(props) {
-  const { location } = props;
+export default function EpisodeCard(props) {
+  const { episode } = props;
 
   return (
     <Card>
-      <SubTitle>{location.name}</SubTitle>
+      <SubTitle>{episode.name}</SubTitle>
       <div className="details">
-        <p>Type: {location.type}</p>
-        <p>Residents: {location.residents.length}</p>
+        <p>Air Date: {episode.air_date}</p>
+        <p>Episode: {episode.episode}</p>
       </div>
     </Card>
   )
