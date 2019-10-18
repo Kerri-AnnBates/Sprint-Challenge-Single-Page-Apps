@@ -1,10 +1,32 @@
-import React, { useState } from "react";
+import React from "react";
+import styled from 'styled-components';
 
-export default function SearchForm() {
- 
+const SearchSection = styled.div`
+  text-align: center;
+  margin: 20px auto;
+`
+
+const SearchInput = styled.input`
+  padding: 5px 20px;
+  font-size: 18px;
+  border-radius: 5px;
+  border: 2px solid slateblue;
+`
+
+export default function SearchForm(props) {
+  const { searchCharacters, onSearch } = props;
   return (
-    <section className="search-form">
-     // Add a search form here
-    </section>
+    <SearchSection className="search-form">
+     <form>
+        <SearchInput 
+          type="text" 
+          name="search" 
+          id="name" 
+          placeholder="Search character" 
+          onChange={searchCharacters} 
+          onSubmit={(e) => onSearch(e.target.value)}
+        />
+     </form>
+    </SearchSection>
   );
 }

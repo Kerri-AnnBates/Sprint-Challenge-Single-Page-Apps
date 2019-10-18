@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import styled from 'styled-components';
-import LocationCard from './LocationCard';
+import EpisodeCard from "./EpisodeCard";
 
 const Flex = styled.div`
   display: flex;
@@ -11,14 +11,14 @@ const Flex = styled.div`
 
 export default function CharacterList() {
 
-  const [locationsData, setLocationsData] = useState([]);
+  const [episodesData, setEpisodeData] = useState([]);
 
   // Pull in data from API on load.
   useEffect(() => {
-    Axios.get('https://rickandmortyapi.com/api/location/')
+    Axios.get('https://rickandmortyapi.com/api/episode/')
     .then(response => {
 
-      setLocationsData(response.data.results);
+      setEpisodeData(response.data.results);
     })
     .catch(error => {
       console.log('Error: Unable to fetch data', error);
@@ -28,10 +28,10 @@ export default function CharacterList() {
 
   return (
     <section>
-        <h2>Locations</h2>
+        <h2>Episodes</h2>
       <Flex>
-        {locationsData.map(location => (
-          <LocationCard location={location} key={location.id}/>
+        {episodesData.map(episode => (
+          <EpisodeCard episode={episode} key={episode.id}/>
         ))}
       </Flex>
     </section>

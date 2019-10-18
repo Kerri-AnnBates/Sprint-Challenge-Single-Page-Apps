@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -26,6 +30,10 @@ main {
 
 .grid-view div.card.ui {
   margin: 1.25rem;
+}
+
+img{
+  max-width: 100%;
 }
 /*
 .main-img {
