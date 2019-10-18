@@ -8,6 +8,11 @@ const Nav = styled.nav`
 const StyledLink = styled(NavLink)`
   text-decoration: none;
   padding: 0 10px;
+  color: #000060;
+
+  &.active {
+    color: #82B83A;
+  }
 `
 
 export default function Header() {
@@ -15,7 +20,7 @@ export default function Header() {
     <header className="ui centered">
       <h1 className="ui center">Rick &amp; Morty Fan Page</h1>
       <Nav>
-        <StyledLink  to='/'>Home</StyledLink>
+        <StyledLink  exact to='/'>Home</StyledLink>
         <StyledLink to='/characters'>Characters</StyledLink>
       </Nav>
     </header>

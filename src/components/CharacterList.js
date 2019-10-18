@@ -2,6 +2,13 @@ import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import CharacterCard from "./CharacterCard";
 import SearchForm from "./SearchForm";
+import styled from 'styled-components';
+
+const Flex = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+`
 
 export default function CharacterList() {
 
@@ -14,6 +21,7 @@ export default function CharacterList() {
     setSearchValue(e.target.value);
   }
 
+  // Pull in data from API on load.
   useEffect(() => {
     Axios.get('https://rickandmortyapi.com/api/character/')
     .then(response => {
@@ -26,23 +34,25 @@ export default function CharacterList() {
     })
   }, []);
 
+  // Filter through data on every change from the form.
   useEffect(() => {
     setFilteredCharacters(
       charactersData.filter((character) => {
         return character.name.toLowerCase().includes(searchValue.toLowerCase());
       })
-    )
+    );
 
   }, [searchValue]);
 
-  console.log(searchValue);
-  console.log(filteredChracters);
+
   return (
     <section className="character-list">
       <SearchForm searchCharacters={searchCharacters} />
-      {filteredChracters.map(character => (
-        <CharacterCard character={character} key={character.id}/>
-      ))}
+      <Flex>
+        {filteredChracters.map(character => (
+          <CharacterCard character={character} key={character.id}/>
+        ))}
+      </Flex>
     </section>
   );
 }
